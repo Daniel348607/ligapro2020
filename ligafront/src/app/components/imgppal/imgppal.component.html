@@ -1,0 +1,26 @@
+
+<td width = "100%" style="vertical-align:top; text-align: left" >
+<img src="assets/CabNoticias.jpg" alt="Noticias" style="max-width:100%;width:auto;height:auto;align-content:left;"/>
+<br>
+<br>
+<table>
+    <tr *ngFor="let noticia of noticiasService.noticias">
+      <td width="30%">
+        <a href="#"  (click)='ShowNews(0)' [routerLink]="['../viewnoticia', noticia.noticiasid]">  
+        <img *ngIf = "pantalla === 640" width="100%" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + noticia.noticiasfot)">
+        <img *ngIf = "pantalla === 360" width="100%" height="15%" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + noticia.noticiasfot)">
+       </a>
+      </td>
+      <td style="vertical-align:top;">
+        <a href="#"  (click)='ShowNews(0)' [routerLink]="['../viewnoticia', noticia.noticiasid]">  
+          {{noticia.noticiascab}}
+        </a>
+        <br>
+        <hr/>
+        <br>
+          {{noticia.noticiasdet}}
+      </td>
+    </tr>
+  </table>
+</td>
+

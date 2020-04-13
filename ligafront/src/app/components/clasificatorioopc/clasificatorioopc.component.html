@@ -1,0 +1,82 @@
+<b>Torneo Clasificatorio</b>
+<br>
+<br>
+<div class="tab">
+  <!--PARA PC-->
+  <div *ngIf = "pantalla === 640">
+    <a href="#" [routerLink]="['../clasificatoriogru']">
+      <button class="tablinks">
+        Grupos
+      </button></a>
+    <hr>
+    <a href="#" [routerLink]="['../clasificatoriopar/0']">
+      <button class="tablinks">
+        Partidos
+      </button></a>
+    <hr>
+    
+      <button class="tablinks" (click)="fechasCampeonatosLlave($event, 1)">
+        Copa Revancha
+      </button>
+    <hr>
+    
+      <button class="tablinks" (click)="fechasCampeonatosLlave($event, 2)">
+        Copa de Campeones
+      </button>
+  </div>
+  <!--PARA CEL-->
+  <div *ngIf = "pantalla === 360">
+    <a href="#" [routerLink]="['../clasificatoriogru']">
+      <button class="tablinks">
+        Grupos
+      </button>
+    </a>
+    <hr>
+    <a href="#" [routerLink]="['../clasificatoriopar/0']">
+      <button class="tablinks">
+        Partidos
+      </button>
+    </a>
+    <hr>
+      <button class="tablinks" (click)="fechasCampeonatosLlave($event, 1)">
+        Copa Revancha
+      </button>
+    <hr>
+    
+      <button class="tablinks" (click)="fechasCampeonatosLlave($event, 2)">
+        Copa de Campeones
+      </button>
+  </div>
+</div>
+
+
+<!-- <div id="DivCon" class="tabcontent">
+  <div class="tabh">
+    <div *ngFor="let cam of campeonatosService.campeonatos; let ind=index">
+ 
+      <div *ngIf = "pantalla === 640">
+          <button class="tablinksh" (click)="fechasCampeonatos($event, cam.campeonatoid, cam.campeonatonom)" id=cam.campeonatoid>
+            {{cam.campeonatonom}}
+          </button>
+      </div>
+
+      <div *ngIf = "pantalla === 360"> 
+          <button class="tablinksh" (click)="fechasCampeonatos($event, cam.campeonatoid, cam.campeonatonom)" id=cam.campeonatoid>
+              <font size =1>{{cam.campeonatonom}}</font>
+          </button>
+      </div>
+    </div>
+  </div> -->
+
+    
+  <div id="CamCon" class="tabcontenth">
+    <tr *ngFor="let fe of par; let ind=index" style="display:inline-block;">
+      <img width="20" src="assets/cale.jpg"/>
+      <a href="#" [routerLink]="['../fixture', fe.campeonatoid, 0,fe.PartidosNomJug]">
+        <td style="background-color:white" *ngIf="fe.PartidosIng != 1">{{fe.PartidosNomJug}}</td>
+        <td style="background-color:rgb(218, 216, 216)" *ngIf="fe.PartidosIng === 1">{{fe.PartidosNomJug}}</td>
+      </a>
+      &nbsp;&nbsp;&nbsp;
+    </tr>
+  </div>
+

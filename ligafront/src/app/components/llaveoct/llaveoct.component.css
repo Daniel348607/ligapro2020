@@ -1,0 +1,38 @@
+#col01 { background: white; width:10%; vertical-align: top;}
+#col02 { background: white; width:3%; vertical-align: top;}
+#col03 { background: white; width:27%; vertical-align: top;}
+#col04 { background: white; width:60%; vertical-align: top;}
+#col01, #col02, #col03, #col04 { display: inline-block; color: black; }
+
+
+/*----------- CAJA ----------- */
+.caja { 
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    color: white; 
+    text-align: center; 
+    height: 50px;
+    width: 100px;
+    display: table-cell;
+    vertical-align: middle;
+    background: black; 
+    margin: 0px 0 25px;
+    overflow: hidden; 
+    border-radius: 25px 25px 25px 25px; 
+    -moz-border-radius: 25px 25px 25px 25px; 
+    -webkit-border-radius: 25px 25px 25px 25px; 
+}
+
+.texto {
+    font-size: 8px; 
+}
+
+.linea{
+    display:inline;
+    vertical-align: center;
+}
+
+.lineaimg{
+    display:block;
+    margin-top: 20px;
+    text-align: left; 
+}

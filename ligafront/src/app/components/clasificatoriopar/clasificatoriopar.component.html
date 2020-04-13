@@ -1,0 +1,81 @@
+<div align="left">
+    <h4 *ngIf = "Fec == 0">Partidos Clasificatorio</h4><p id="cargando"><b>Cargando...</b></p>
+    <h4 *ngIf = "Fec == 1">Partidos Clasificatorio Copa de Plata</h4>
+    <h4 *ngIf = "Fec == 2">Partidos Clasificatorio Copa de Oro</h4>
+</div>
+<form #partidoForm="ngForm"> 
+<div>
+  <table class="table">
+      <tr >
+          <th width="14%"><b>Fecha</b></th>
+          <th width="6%"><b>Hora</b></th>
+          <th width="14%" *ngIf = "pantalla === 640"><b>Complejo</b></th>
+          <th width="10%" *ngIf = "pantalla === 640"><b>Cancha</b></th>
+          <th width="18%" class="center"><b>Local</b></th>
+          <th style="text-align: left" width="4%" class="center"><b>Res.1</b></th>
+          <th style="text-align: left" width="4%" class="center"><b>Res.2</b></th>
+          <th width="18%" class="center"><b>Visitante</b></th>
+      </tr>
+
+      <tr *ngFor="let partido of par; let ind=index">
+        <input type="hidden" name="PartidosId-{{ind}}" #_id="ngModel" [(ngModel)]="partido.PartidosId">
+        <input type="hidden" name="equipoid1-{{ind}}" #_id="ngModel" [(ngModel)]="partido.equipoid1">
+        <input type="hidden" name="equipoid2-{{ind}}" #_id="ngModel" [(ngModel)]="partido.equipoid2">
+        <td width="14%"><b>{{partido.PartidosNomCla}}</b>-{{partido.PartidosFec}}</td>
+        <td width="6%">{{ partido.PartidosHor}}</td>
+        <td width="14%" *ngIf = "pantalla === 640">{{ partido.PartidosComplejo}}</td>
+        <td width="10%" *ngIf = "pantalla === 640">{{ partido.PartidosCan}}</td>
+
+        <td class="der" width="18%">
+          <a href="#" [routerLink]="['../equipodatos', partido.equipoid1]">
+          {{ partido.equiponom1}}
+          &nbsp;
+          <img style="vertical-align:middle" width="40" height="40" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + partido.equipoesc1)">
+          </a>
+        </td>
+
+        <td *ngIf = "userrol == 1; else ver1" width="4%"><input type="number" name="Res1-{{ind}}" #name="ngModel" [(ngModel)]="partido.Equipo1Res" placeholder="Res. 1"></td>
+        <td *ngIf = "userrol == 1; else ver2" width="4%"><input type="number" name="Res2-{{ind}}" #name="ngModel" [(ngModel)]="partido.Equipo2Res" placeholder="Res. 2"></td>
+
+        <ng-template #ver1>
+          <td class="center" width="4%">{{ partido.Equipo1Res}}</td>
+        </ng-template>
+        <ng-template #ver2>
+          <td class="center" width="4%">{{ partido.Equipo2Res}}</td>
+        </ng-template>
+
+        <td colspan="4" class="izq" width="18%">
+          <a href="#" [routerLink]="['../equipodatos', partido.equipoid2]">
+            <img style="vertical-align:middle" width="40" height="40" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + partido.equipoesc2)">
+            &nbsp; 
+            {{ partido.equiponom2}}
+          </a>
+        </td>
+
+        <div class="tooltip" *ngIf = "userrol == 1">
+          <td width="2%">
+            <a style="cursor:pointer;" (click)="addResPartido(partido, partidoForm)"><img width="25" alt="Editar" src="assets/Agregar.png"/></a>
+          </td>
+          <span class="tooltiptext">Guardar resultado</span>
+        </div>
+        <div class="tooltip">
+          <td width="2%">
+              <a href="#" [routerLink]="['../viewpartido', partido.PartidosId]"><img width="25" alt="Editar" src="assets/DatPar.png"/></a>
+          </td>
+          <span class="tooltiptext">Datos del partido</span>
+        </div>
+        <div class="tooltip" *ngIf = "userrol == 1">
+          <td width="2%">
+              <a href="#" [routerLink]="['../partidosfot', partido.campeonatoid, partido.PartidosId]"><img width="45" alt="Editar" src="assets/fotos.jpg"/></a>
+          </td>
+          <span class="tooltiptext">Subir fotos del partido</span>
+        </div>
+      </tr>
+  </table>
+</div>
+</form>
+
+<br>
+<a href="#" [routerLink]="['../../clasificatorioopc']">
+  <img  width="30px" height="20px" src="assets/volver.png" alt='Volver'>
+</a>

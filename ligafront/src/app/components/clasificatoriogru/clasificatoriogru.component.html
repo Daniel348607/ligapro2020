@@ -1,0 +1,67 @@
+
+<form #partidoForm="ngForm" style="text-align: center">  
+<div>
+  <table style="width: 80%;" align="center"  *ngFor="let grupos of fechas; let ind=index"> 
+    <tr>
+      <div align="left">
+        <h4>{{grupos.Partidos}}</h4>
+      </div>
+    </tr>
+    <tr style="background-color: rgb(199, 199, 199);">
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b></b></th>
+      <th style="width:25%" *ngIf = "pantalla === 360"><b><font size =1></font></b></th>
+
+      <th class = "tdtit2"  *ngIf = "pantalla === 640"><b><font size =2>PJ</font></b></th>
+      <th style="width:10%" *ngIf = "pantalla === 360"><b><font size =1>PJ</font></b></th>
+
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b><font size =2>PG</font></b></th>
+      <th style="width:10%" *ngIf = "pantalla === 360"><b><font size =1>PG</font></b></th>
+
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b><font size =2>PE</font></b></th>
+      <th style="width:10%" *ngIf = "pantalla === 360"><b><font size =1>PE</font></b></th>
+
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b><font size =2>PP</font></b></th>
+      <th style="width:10%" *ngIf = "pantalla === 360"><b><font size =1>PP</font></b></th>
+
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b><font size =2>GF</font></b></th>
+      <th style="width:10%" *ngIf = "pantalla === 360"><b><font size =1>GF</font></b></th>
+
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b><font size =2>GC</font></b></th>
+      <th style="width:10%;text-align: left" *ngIf = "pantalla === 360"><b><font size =1>GC</font></b></th>
+
+      <th class = "tdtit2" *ngIf = "pantalla === 640"><b><font size =2>PTOS</font></b></th>
+      <th style="width:15%" *ngIf = "pantalla === 360"><b><font size =1>PTS</font></b></th>
+    </tr>
+
+    <tr class="odd" *ngFor="let equipo of eqclas ; let ind=index">      
+
+      <td width="25%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">
+        <a href="#" [routerLink]="['../equipodatos', equipo.eid]">
+        {{ equipo.enom}}
+        </a>
+      </td>
+
+      <td width="10%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.pj}}</td>
+
+      <td width="10%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.pg}}</td>
+
+      <td width="10%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.pe}}</td>
+
+      <td width="10%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.pp}}</td>
+
+      <td width="10%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.gf}}</td>
+
+      <td width="10%" style="background-color:white; " *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.gc}}</td>
+
+      <td width="15%" style="background-color:white; height: 3;" *ngIf = "equipo.Fecha === grupos.Partidos">{{ equipo.ptos}}</td>
+
+    </tr>
+
+  </table>
+
+</div>
+</form>
+
+<a href="#" [routerLink]="['../clasificatorioopc']">
+  <img  width="30px" height="20px" src="assets/volver.png" alt='Volver'>
+</a>
